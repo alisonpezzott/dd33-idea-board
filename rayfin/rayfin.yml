@@ -1,0 +1,36 @@
+id: idea-board
+name: idea-board
+version: 1.0.0
+services:
+  auth:
+    enabled: true
+    fabric:
+      enabled: true
+      externalEntraExchange: true
+    password:
+      enabled: false
+    allowedRedirectUris:
+      - http://localhost:5173
+      - http://localhost:5174
+      - http://127.0.0.1:5174
+      - https://rapid-stem-bcc53edacf-centralus.webapp.fabricapps.net
+      - https://free-larch-5363a6f520-centralus.webapp.fabricapps.net
+      - https://total-rapid-861c5354cc-centralus.webapp.fabricapps.net
+  data:
+    enabled: true
+    path: packages/data
+    buildCommand: npm run build
+    dialect: mssql
+  staticHosting:
+    enabled: true
+    path: packages/frontend
+    folder: dist
+    buildCommand: npm run build:fabric
+    indexDocument: index.html
+    assetAccess: protected
+    embedded:
+      only: false
+  storage:
+    enabled: false
+  functions:
+    enabled: false
